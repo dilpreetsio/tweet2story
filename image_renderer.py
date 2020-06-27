@@ -1,12 +1,10 @@
-import tweepy
 import json
 import textwrap
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 import requests
-import click
-import os
-import GetOldTweets3 as got
+import os 
+import pathlib
 
 width = 1080
 height = 1920
@@ -20,43 +18,23 @@ tweet_text_font_size = 48
 user_font_size = 10
 tweet_line_height = 4
 
-auth = tweepy.OAuthHandler('', '')
-auth.set_access_token('', '')
-api = tweepy.API(auth)
-
-class TwitterStream(tweepy.StreamListener):
-    def on_status(self, status):
-        tweet = json.loads(json.dumps(status._json))
-        print(tweet)
-        image = draw_story(tweet)
-        save_story(image, name = tweet["user"]["screen_name"] + "_" +str(tweet["id"]))
-
-def fetch_tweet_from_url(url):
-    url_args = url.split('/')
-    status_id = int (url_args[len(url_args) - 1])
-    tweet = api.get_status(status_id, tweet_mode="extended")
-    tweet = json.loads(json.dumps(tweet._json))
-    return tweet
-
 def save_story(image, name):
     image.save("./" + name + ".png")
 
 def draw_story(tweet):
-    user = tweet["user"]
-    tweet_text = tweet['full_text'] if ("full_text" in tweet) else tweet['text']
-    display_name = user["name"]
-    handle = "@" + user["screen_name"]
-    avatar_url = user["profile_image_url"]
+    # tweet_text = tweet['full_text'] if ("full_text" in tweet) else tweet['text']
+    tweet_text = tweet["tweet"]
+    display_name = tweet["display_name"]
+    handle = "@" + tweet["handle"]
+    avatar_url = tweet["avatar"]
     avatar_url = avatar_url[:avatar_url.rindex('_')] + avatar_url[avatar_url.rindex('.') :]
-    print(avatar_url)
     response = requests.get(avatar_url)
 
     image = Image.new('RGBA', (1080, 1920), (29, 161, 242)) #bg with twitter color
     avatar = Image.open(BytesIO(response.content)).convert("RGBA")
     draw = ImageDraw.Draw(image)
 
-    # Calculate the dimensions
-    font = ImageFont.truetype("./fonts/Roboto-Regular.ttf", tweet_text_font_size)
+    font = ImageFont.truetype("./fonts/roboto.ttf", tweet_text_font_size)
     lines = textwrap.wrap(tweet_text, width=38)
     line_widths = []
     for line in lines:
@@ -110,26 +88,3 @@ def draw_story(tweet):
         draw.text((130, line_height), line, font=font, fill=(55,55,55))
 
     return image
-
-@click.command()
-@click.option('-u', default ="", help="Paste url of the tweet")
-@click.option('-s', default=False, help="flag for stream mode")
-def url_2_story(u, s):
-    """Create beautiful stories from tweets"""
-    if(s) :
-        user = api.lookup_users(screen_names=[s])[0]
-        user = json.loads(json.dumps(user._json))
-        print("streaming tweets for " + user['name'])
-        stream_listener = TwitterStream()
-        stream = tweepy.Stream(auth = api.auth, listener=stream_listener, tweet_mode="extended")
-        stream.filter(follow=[user['id_str']])
-    elif u!="":
-        tweet = fetch_tweet_from_url(u)
-        image = draw_story(tweet)
-        save_story(image, name = tweet["user"]["screen_name"] + "_" + str(tweet["id"]))
-    else:
-        print("missing args")
-    print(u)
-
-if __name__ == '__main__':
-    url_2_story()

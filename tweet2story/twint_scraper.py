@@ -20,12 +20,20 @@ def getUserByUsername(username):
     user = twint.output.users_list
     return user[0]
 
+def sanitizeTweetText(tweet, urls):
+    for url in urls:
+        tweet = tweet.replace(str(url), "")
+    return tweet
+
 def sanitizeTweet(tweet, user):
     sanitizedTweet = {
         "handle": tweet.username,
+        "id": tweet.id_str,
+        "is_retweet": tweet.retweet,
+        "urls": tweet.urls,
         "display_name": user.name,
         "avatar": user.avatar,
-        "tweet": tweet.tweet,
+        "tweet": sanitizeTweetText(tweet.tweet, tweet.urls),
     }
     return sanitizedTweet
 

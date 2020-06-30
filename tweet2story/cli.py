@@ -23,7 +23,7 @@ def url_2_story(u):
         tweet = twintScraper.getTweetFromUrl(u)
         # tweet = fetch_tweet_from_url(u)
         image = draw_story(tweet)
-        save_story(image, name = tweet["user"]["screen_name"] + "_" + str(tweet["id"]))
+        save_story(image, name = tweet["handle"] + "_" + str(tweet["id"]))
         #tweepy mode
     else:
         print("missing args")

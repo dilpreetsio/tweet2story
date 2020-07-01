@@ -1,7 +1,7 @@
 # Tweet2Story
-Create instagram stories from tweets using cli.
-![Intro Gif](tweet2story.gif)
-![Sample](sample.png)
+Create instagram stories from tweets using cli.<br/>
+![Intro Gif](tweet2story.gif) <br/>
+![Sample | 192x108](sample.png)
 
 ## Requirements 
 * [Pillow](https://pillow.readthedocs.io/en/stable/) 
@@ -18,7 +18,7 @@ tweet2story -u <URL OF THE TWEET>
 
 ### Start a streamer (requires API keys to be exported)
 ```
-tweet2story -s <username>
+tweet2story -s <USERNAME>
 ```
 
 ## Options 

@@ -58,7 +58,6 @@ def draw_story(tweet):
     tweet_text_height = len(lines) * (font.getsize(lines[0])[1] + 5)
     tweet_text_width = max(line_widths)
 
-    print(tweet_text_width)
     avatar_boundry = avatar_size + avatar_boundry_width
 
     rect_width_half = (rectangle_padding + tweet_text_width/2)

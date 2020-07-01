@@ -26,7 +26,7 @@ def sanitizeTweetText(tweet, urls):
     return tweet
 
 def sanitizeTweet(tweet, user):
-    sanitizedTweet = {
+    return {
         "handle": tweet.username,
         "id": tweet.id_str,
         "is_retweet": tweet.retweet,
@@ -35,7 +35,6 @@ def sanitizeTweet(tweet, user):
         "avatar": user.avatar,
         "tweet": sanitizeTweetText(tweet.tweet, tweet.urls),
     }
-    return sanitizedTweet
 
 def getTweetFromUrl(url):
     url_array = url.split("/")

@@ -1,3 +1,6 @@
 /dist
 /venv
 /tweet2story/__pycache__
+/.eggs
+/build
+/tweet2story.egg-info

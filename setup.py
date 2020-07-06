@@ -1,9 +1,14 @@
-from distutils.core import setup
+from setuptools import setup
+
 setup(
   name = 'tweet2story',         # How you named your package folder (MyLib)
   packages = ['tweet2story'],   # Chose the same as "name"
   version = '0.1', 
   setup_requires=['wheel'],
+  entry_points='''
+        [console_scripts]
+        tweet2story=tweet2story.__main__:main
+    ''',
   license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
   description = 'Create instagram stories from tweets',   # Give a short description about your library
   author = 'Dilpreet Singh',                   # Type in your name

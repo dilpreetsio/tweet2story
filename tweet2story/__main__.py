@@ -1,19 +1,20 @@
 import click
 import os
 import tweepy
-import tweepy_scraper as tweepyScaraper
-from tweepy_scraper import TwitterStream, fetchTweetFromUrl
+import tweet2story.tweepy_scraper as tweepyScaraper
+from tweet2story.tweepy_scraper import TwitterStream, fetchTweetFromUrl
 import tweet2story.twint_scraper as twintScraper
-from image_renderer import drawStory, saveStory
+from tweet2story.image_renderer import drawStory, saveStory
 
 colors = {
     "twitter": (29, 161, 242),
-    "orange": (255, 165, 44),
-    "red": (255, 0, 24),
-    "green": (0, 128, 24),
-    "yellow":(255, 255, 65),
+    "orange": (255, 163, 0),
+    "red": (218, 75, 92),
+    "green": (180,238,180),
+    "yellow":(255, 223, 124),
     "violet":(134, 0, 125),
-    "blue": (0, 0, 249)
+    "blue": (149, 201, 225),
+    "pink": (246, 169, 189)
 }
 
 @click.command()
@@ -23,7 +24,9 @@ colors = {
 def main(u, s, c):
     """Create beautiful stories from tweets"""
     if u!="":
+        print("Fetching tweet..")
         tweet = twintScraper.getTweetFromUrl(u)
+        print("Creating story..")
         drawStory(tweet, colors[c] if c in colors else colors["twitter"])
     elif(s) :
         if os.environ.get("TWITTER_CUSTOMER_KEY") and os.environ.get("TWITTER_CUSTOMER_SECRET") and\

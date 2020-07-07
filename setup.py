@@ -1,22 +1,22 @@
 from setuptools import setup
 
 setup(
-  name = 'tweet2story',         # How you named your package folder (MyLib)
-  packages = ['tweet2story'],   # Chose the same as "name"
-  version = '0.1', 
+  name = 'tweet2story',         
+  packages = ['tweet2story'],   
+  version = '1.0.1a', 
   setup_requires=['wheel'],
   entry_points='''
         [console_scripts]
         tweet2story=tweet2story.__main__:main
     ''',
-  license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
-  description = 'Create instagram stories from tweets',   # Give a short description about your library
-  author = 'Dilpreet Singh',                   # Type in your name
-  author_email = 'imdilpreetsio@gmail.com',      # Type in your E-Mail
-  url = 'https://github.com/user/reponame',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
-  keywords = ['twitter', 'instagram', 'image', 'image processing'],   # Keywords that define your package best
-  install_requires=[            # I get to this in a second
+  license='MIT',        
+  description = 'Create instagram stories from tweets',   
+  author = 'Dilpreet Singh',                   
+  author_email = 'imdilpreetsio@gmail.com',      
+  url = 'https://github.com/dilpreetsio/tweet2story',   
+  # download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    
+  keywords = ['twitter', 'instagram', 'image', 'image processing', 'story', 'computer graphics', 'graphics'],   
+  install_requires=[            
           'click',
           'pillow',
           'twint',

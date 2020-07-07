@@ -40,6 +40,8 @@ def getTweetFromUrl(url):
     url_array = url.split("/")
     tweet_id = url_array[5]
     username = url_array[3]
+    if "?" in tweet_id:
+        tweet_id = tweet_id.split("?")[0]
     last_tweet_time = None
     tweet_found = False
     user = getUserByUsername(username)

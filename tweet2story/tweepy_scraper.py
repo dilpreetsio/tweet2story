@@ -1,7 +1,7 @@
 import tweepy
 import json
 import os
-from image_renderer import drawStory
+from tweet2story.image_renderer import drawStory
 
 
 def createApiInstance():
@@ -21,11 +21,14 @@ def createApiInstance():
 
 class TwitterStream(tweepy.StreamListener):
     def __init__(self, color):
+        super(TwitterStream, self).__init__()
         self.color = color
     
     def on_status(self, status):
+        print("Received new tweet..")
         tweet = json.loads(json.dumps(status._json))
         tweet = santizeTweet(tweet, tweet["user"])
+        print("Creating the story..")
         drawStory(tweet, self.color)
         return tweet
 

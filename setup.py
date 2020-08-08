@@ -8,7 +8,7 @@ setup(
   long_description=long_description,
   long_description_content_type='text/markdown',      
   packages = ['tweet2story'],   
-  version = '1.0.3', 
+  version = '1.0.4', 
   setup_requires=['wheel'],
   entry_points='''
         [console_scripts]
@@ -31,5 +31,5 @@ setup(
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'License :: OSI Approved :: MIT License',   # Again, pick a license
   ],
-  python_requires='>=3.5',
+  python_requires='>=3.6',
 )

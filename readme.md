@@ -1,11 +1,11 @@
 # Tweet2Story
-![Intro Gif](https://github.com/dilpreetsio/tweet2story/blob/master/tweet2story.gif) <br/>
+![Intro Gif](https://raw.githubusercontent.com/dilpreetsio/tweet2story/master/tweet2story.gif) <br/>
 Create instagram stories from tweets using cli.<br/>
-![Elon Sample](https://github.com/dilpreetsio/tweet2story/blob/master/elonmusk_sample.png)
-![Naval Sample](https://github.com/dilpreetsio/tweet2story/blob/master/naval_sample.png)
-![Mr beast Sample](https://github.com/dilpreetsio/tweet2story/blob/master/mrbeastyt_sample.png)
-![Orange Sample](https://github.com/dilpreetsio/tweet2story/blob/master/orangebook_sample.png)
-![Stoic Sample](https://github.com/dilpreetsio/tweet2story/blob/master/stoic_sample.png)
+![Elon Sample](https://raw.githubusercontent.com/dilpreetsio/tweet2story/master/elonmusk_sample.png)
+![Naval Sample](https://raw.githubusercontent.com/dilpreetsio/tweet2story/master/naval_sample.png)
+![Mr beast Sample](https://raw.githubusercontent.com/dilpreetsio/tweet2story/master/mrbeastyt_sample.png)
+![Orange Sample](https://raw.githubusercontent.com/dilpreetsio/tweet2story/master/orangebook_sample.png )
+![Stoic Sample](https://raw.githubusercontent.com/dilpreetsio/tweet2story/master/stoic_sample.png)
 
 ## Requirements 
 * [Pillow](https://pillow.readthedocs.io/en/stable/) 

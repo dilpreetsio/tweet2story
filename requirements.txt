@@ -32,5 +32,5 @@ six==1.15.0
 soupsieve==2.0.1
 tweepy==3.8.0
 -e git+https://github.com/twintproject/twint.git@44273dd9c69cd5d5f2754b8e1d725f4ffa62311a#egg=twint
-urllib3==1.25.9
+urllib3==1.26.5
 yarl==1.4.2
